@@ -11,11 +11,15 @@ block content
             div(style='margin-left:20px;margin-top:20px')
 
                 h4 Items
-                dl 
-                    each item in category_items 
-                        dt
-                            a(href=item.url) #{item.name}
-                        dd #{item.description}
+                ul.m-0.p-0.d-flex.flex-wrap(style="list-style-type: none; gap: 1rem") 
+                    each item in category_items
+                        li 
+                            div
+                                a(href=item.url)
+                                    img.grid-item-image(src=`/data/uploads/${item.image.filename}`, alt=item.name)
+                                    p.mb-2 #{item.name}
+                                p.mb-1  R#{(item.price / 100).toFixed(2)}
+                                p.mb-1 #{item.inStock} in stock
         else 
             p Do you really want to delete this category?
 

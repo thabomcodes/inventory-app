@@ -11,7 +11,7 @@ var app = express();
 
 // mongodb setup
 mongoose.set("strictQuery", false);
-const devDbUrl = "mongodb://127.0.0.1/local-library-devDB";
+const devDbUrl = "mongodb://127.0.0.1/inventory-db";
 const mongoDB = process.env.MONGODB_URI || devDbUrl;
 // Wait for database to connect, logging an error if there is a problem
 main().catch((err) => console.log(err));

@@ -58,7 +58,6 @@ exports.item_create_post = [
 	// Process request after validation and sanitation
 	asyncHandler(async (req, res, next) => {
 		const errors = validationResult(req);
-
 		// Create Category object with escaped and trimmed data
 		const item = new Item({
 			name: req.body.name,
@@ -66,6 +65,7 @@ exports.item_create_post = [
 			category: req.body.category,
 			price: req.body.price,
 			inStock: req.body.inStock,
+			image: req.file,
 		});
 
 		if (!errors.isEmpty()) {
@@ -157,6 +157,8 @@ exports.item_update_post = [
 			inStock: req.body.inStock,
 			_id: req.params.id,
 		});
+
+		item.image = req.file ? req.file : item.image;
 		const categories = await Category.find({}, "name")
 			.sort({ name: 1 })
 			.exec();

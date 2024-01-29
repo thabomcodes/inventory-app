@@ -4,7 +4,7 @@ block content
     div.content
         h1= title 
 
-        form(method="post") 
+        form(method="post" enctype="multipart/form-data") 
             div.form-group
                 label(for="name") Name: 
                 input#name.form-control(type="text" placeholder="Name of item" name="name" required value=(undefined===item ? "" : item.name))
@@ -26,6 +26,13 @@ block content
             div.form-group
                 label(for='inStock') In Stock:
                 input#price.form-control(type='number' min="0" name="inStock" value=(undefined===item ? "" : item.inStock))
+            div.form-group
+                if undefined !== item && item.image !== undefined 
+                    p Current Image: 
+                    p 
+                        img.item-image(src=`/data/uploads/${item.image.filename}`, alt=item.name)
+                label(for="image") Image: 
+                input#image.form-control(type="file" name="image" accept="image/*")
 
             button.btn.btn-primary(type='submit') Submit
 

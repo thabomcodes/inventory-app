@@ -16,3 +16,16 @@ body {
 .content {
 	width: 100%;
 }
+
+.item-image {
+	width: 18rem;
+	height: 18rem;
+	object-fit: cover;
+	object-position: center;
+}
+.grid-item-image {
+	width: 8rem;
+	height: 8rem;
+	object-fit: cover;
+	object-position: center;
+}

@@ -2,7 +2,9 @@ extends layout
 
 block content 
     div.content
-        h1= title 
+        h1.d-flex.justify-content-between.align-items-center= title 
+            a.btn.btn-primary(href="/categories/create") Add Category
+
 
         if category_list.length 
             ul 
@@ -11,4 +13,3 @@ block content
                         a(href=category.url) #{category.name}
         else 
             p There are no categories.
-        a.btn.btn-primary(href="/categories/create") Add Category

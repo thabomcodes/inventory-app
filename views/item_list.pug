@@ -2,13 +2,20 @@ extends layout
 
 block content 
     div.content
-        h1= title 
+        h1.d-flex.justify-content-between.align-items-center= title 
+            a.btn.btn-primary(href="/items/create") Add Item
+
 
         if item_list.length 
-            ul 
+            ul.m-0.p-0.d-flex.flex-wrap(style="list-style-type: none; gap: 1rem") 
                 each item in item_list 
                     li 
-                        a(href=item.url) #{item.name}
+                        div
+                            a(href=item.url)
+                                img.grid-item-image(src=`/data/uploads/${item.image.filename}`, alt=item.name)
+                                p.mb-2 #{item.name}
+                            p.mb-1  R#{(item.price / 100).toFixed(2)}
+                            p.mb-1 #{item.inStock} in stock
+
         else 
             p There are no items.
-        a.btn.btn-primary(href="/items/create") Add Item
