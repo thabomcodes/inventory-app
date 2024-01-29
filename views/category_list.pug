@@ -1,0 +1,14 @@
+extends layout 
+
+block content 
+    div.content
+        h1= title 
+
+        if category_list.length 
+            ul 
+                each category in category_list 
+                    li 
+                        a(href=category.url) #{category.name}
+        else 
+            p There are no categories.
+        a.btn.btn-primary(href="/categories/create") Add Category
