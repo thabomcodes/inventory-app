@@ -42,14 +42,14 @@ exports.category_create_post = [
 	// Validate and sanitize fields
 	body("name")
 		.trim()
-		.isLength({ min: 1 })
+		.isLength({ min: 3 })
 		.escape()
-		.withMessage("Category name must be specified."),
+		.withMessage("Category name must be at least 3 characters"),
 	body("description")
 		.trim()
-		.isLength({ min: 1 })
+		.isLength({ min: 3 })
 		.escape()
-		.withMessage("Category description must be specified."),
+		.withMessage("Category description must be at least 3 characters."),
 	// Process request after validation and sanitation
 	asyncHandler(async (req, res, next) => {
 		const errors = validationResult(req);
@@ -125,14 +125,14 @@ exports.category_update_post = [
 	// Validate and sanitize fields
 	body("name")
 		.trim()
-		.isLength({ min: 1 })
+		.isLength({ min: 3 })
 		.escape()
-		.withMessage("Category name must be specified."),
+		.withMessage("Category name must be at least 3 characters"),
 	body("description")
 		.trim()
-		.isLength({ min: 1 })
+		.isLength({ min: 3 })
 		.escape()
-		.withMessage("Category description must be specified."),
+		.withMessage("Category description must be at least 3 characters."),
 	// Process request after validation and sanitation
 	asyncHandler(async (req, res, next) => {
 		const errors = validationResult(req);
