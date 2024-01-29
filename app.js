@@ -3,10 +3,21 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+var mongoose = require("mongoose");
 
 var indexRouter = require("./routes/index");
 
 var app = express();
+
+// mongodb setup
+mongoose.set("strictQuery", false);
+const devDbUrl = "mongodb://127.0.0.1/local-library-devDB";
+const mongoDB = process.env.MONGODB_URI || devDbUrl;
+// Wait for database to connect, logging an error if there is a problem
+main().catch((err) => console.log(err));
+async function main() {
+	await mongoose.connect(mongoDB);
+}
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
